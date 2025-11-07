@@ -122,7 +122,7 @@ model1.onDidChangeContent(() => {
     parser2 = JsonFacade.getJsonParser(
       JsonFacade.parseValue(model1.getValue()),
     );
-  } catch (e) {
+  } catch {
     parser2 = JsonFacade.getJsonParser(JsonFacade.parseValue(INITIAL_VALUE));
   }
 });

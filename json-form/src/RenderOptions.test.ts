@@ -23,7 +23,7 @@ import {
 } from './renderer/Renderer';
 import { ViewJsonEditor } from './JsonEditor';
 import { initialModel } from './Model';
-import { nothing } from 'tea-cup-core';
+import { nothing } from 'tea-cup-fp';
 import { jvArray, jvNull, jvObject } from './JsonValue';
 
 describe('Render options', () => {
@@ -33,7 +33,7 @@ describe('Render options', () => {
         MenuTrigger({
           path: JsPath.empty,
           disabled: false,
-          t: () => 'no-t',
+          t: (() => 'no-t') as any,
           dispatch: () => {},
           renderOptions: {},
         }),
@@ -87,7 +87,7 @@ describe('Render options', () => {
         MenuTrigger({
           path: JsPath.empty,
           disabled: false,
-          t: () => 'no-t',
+          t: (() => 'no-t') as any,
           dispatch: () => {},
           renderOptions: { hideMenuTooltip: true },
         }),

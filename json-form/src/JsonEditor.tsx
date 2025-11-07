@@ -29,7 +29,7 @@ import {
   Sub,
   Tuple,
   updatePiped,
-} from 'tea-cup-core';
+} from 'tea-cup-fp';
 import * as TPM from 'tea-pop-menu';
 import {
   actionAddElementToArray,
@@ -476,7 +476,7 @@ export function JsonEditor(props: JsonEditorProps): React.ReactElement {
         maco[2].forEach((outMsg) => {
           switch (outMsg.tag) {
             case 'value-changed': {
-              props.onChange && props.onChange(outMsg.value);
+              props.onChange?.(outMsg.value);
             }
           }
         });

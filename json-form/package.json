@@ -5,30 +5,31 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "@diesel-parser/json-schema-facade-ts": "^0.13.1",
-    "i18next": "^20.6.1",
-    "tea-pop-core": "^5.0.0",
-    "tea-pop-menu": "^5.0.0"
+    "i18next": "^25.6.1",
+    "tea-pop-core": "^6.0.1",
+    "tea-pop-menu": "^6.0.1"
   },
   "peerDependencies": {
-    "@carbon/icons-react": "^11.53.0",
-    "@carbon/react": "^1.71.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-tea-cup": "^2.2.3",
-    "tea-cup-core": "^2.2.3"
+    "@carbon/icons-react": "^11.70.0",
+    "@carbon/react": "^1.95.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-tea-cup": "^5.1.1",
+    "tea-cup-fp": "^1.1.0"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.4.8",
-    "@testing-library/react": "12",
-    "@types/jest": "^26.0.20",
-    "@types/react": "^17.0.83",
-    "@types/react-dom": "^17.0.25",
-    "jest": "24.9.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "16.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "jest": "30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "npm-scripts-watcher": "^1.0.2",
-    "rimraf": "^6.0.1",
-    "sass": "^1.81.0",
-    "ts-jest": "24.3.0"
+    "rimraf": "^6.1.0",
+    "sass": "^1.93.3",
+    "ts-jest": "29.4.5"
   },
   "scripts": {
     "build": "npm run clean && npm run lint && npm run build:ts && npm run test && npm run build:sass",

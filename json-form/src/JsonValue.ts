@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { err, just, Maybe, nothing, ok, Result } from 'tea-cup-core';
+import { err, just, Maybe, nothing, ok, Result } from 'tea-cup-fp';
 import { JsPath } from './JsPath';
 import * as JsFacade from '@diesel-parser/json-schema-facade-ts';
 

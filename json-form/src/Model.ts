@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { just, Maybe, nothing } from 'tea-cup-core';
+import { just, Maybe, nothing } from 'tea-cup-fp';
 import { getValueAt, JsonValue, jsonValueToFacadeValue } from './JsonValue';
 import { JsPath } from './JsPath';
 import * as TPM from 'tea-pop-menu';

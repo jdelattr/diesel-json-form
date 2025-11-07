@@ -16,7 +16,7 @@
 
 import './style.css';
 import '@diesel-parser/json-form/dist/JsonEditor.css';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import * as JsonForm from '@diesel-parser/json-form';
 import { RendererFactory } from '@diesel-parser/json-form';
 
@@ -89,6 +89,8 @@ if (!jsonForm) {
   throw new Error('json-form elem not found');
 }
 
+const root = createRoot(jsonForm);
+
 const strictMode = false;
 const strictModeCb: HTMLInputElement = document.getElementById(
   'strictMode',
@@ -133,7 +135,7 @@ function initJsonForm(
   strictMode: boolean,
   debounceMs: number,
 ) {
-  ReactDOM.render(
+  root.render(
     JsonForm.JsonEditor({
       schema,
       value,
@@ -148,6 +150,5 @@ function initJsonForm(
       rendererFactory: MyRendererFactory,
       debounceMs,
     }),
-    jsonForm,
   );
 }

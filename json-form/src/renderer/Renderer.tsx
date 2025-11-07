@@ -35,7 +35,7 @@ import {
   OverflowMenuVertical,
 } from '@carbon/icons-react';
 import * as React from 'react';
-import { Cmd, Dispatcher, Maybe, maybeOf } from 'tea-cup-core';
+import { Cmd, Dispatcher, Maybe, maybeOf } from 'tea-cup-fp';
 import { box, Dim, pos } from 'tea-pop-core';
 import {
   JsonValue,
@@ -169,19 +169,19 @@ function ViewObject(p: ViewValueProps<JvObject>): React.ReactElement {
             id={'property-name-editor'}
             placeholder={t('propertyNamePlaceholder')}
             value={addingState.addingPropName}
-            onChange={(e) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               dispatch({
                 tag: 'new-property-name-changed',
                 value: e.target.value,
               })
             }
-            onKeyDown={(e) => {
+            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
               dispatch({
                 tag: 'new-property-name-key-down',
                 key: e.key,
               });
             }}
-            invalidText={t<string>('propertyAlreadyExists')}
+            invalidText={t('propertyAlreadyExists').toString()}
             invalid={addingState.isDuplicate}
           />
           <div className={'buttons-row'}>
@@ -435,7 +435,7 @@ function ViewNumber(p: ViewValueProps<JvNumber>): React.ReactElement {
       disabled={p.model.adding.isJust()}
       invalidText={errorsToInvalidText(p)}
       invalid={isInvalid(p)}
-      onChange={(evt) => {
+      onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
         dispatchUpdateProperty(p, {
           tag: 'jv-number',
           value: evt.target.value,
@@ -474,7 +474,7 @@ function ViewStringDefault(p: ViewValueProps<JvString>): React.ReactElement {
       invalidText={errorsToInvalidText(p)}
       invalid={isInvalid(p)}
       placeholder={t('stringValuePlaceholder')}
-      onChange={(evt) => {
+      onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
         const newStr = evt.target.value;
         dispatchUpdateProperty(p, { tag: 'jv-string', value: newStr });
       }}
@@ -519,13 +519,13 @@ function ViewStringWithCombo(p: ViewStringWithComboProps): React.ReactElement {
       value={p.value.value}
       selectedItem={p.value.value}
       placeholder={''}
-      onChange={(item) => {
+      onChange={(item: { selectedItem?: string | null }) => {
         dispatchUpdateProperty(p, {
           tag: 'jv-string',
           value: item.selectedItem ?? '',
         });
       }}
-      onInputChange={(text) => {
+      onInputChange={(text: string) => {
         dispatchUpdateProperty(p, {
           tag: 'jv-string',
           value: text ?? '',
@@ -551,7 +551,7 @@ function MyTimePicker(props: MyTimePickerProps) {
     <TimePicker
       id={'time-picker-' + fmtPath}
       className={'time-picker'}
-      onChange={(e) => {
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
         const t = new MyTime(value);
         const replaced = t.setTime(e.target.value);
         onChange(replaced.fullTime);
@@ -568,7 +568,7 @@ function MyTimePicker(props: MyTimePickerProps) {
           aria-label={t('timeValueLabel', {
             path: props.path.format('.'),
           }).toString()}
-          onChange={(event) => {
+          onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
             const offset = event.target.value;
             const t = new MyTime(value);
             onChange(t.setOffset(offset).fullTime);
@@ -611,7 +611,7 @@ function MyDatePicker(props: MyDatePickerProps) {
       id={'date-picker-' + fmtPath}
       datePickerType="single"
       dateFormat={'Y-m-d'}
-      onChange={(dates) => {
+      onChange={(dates: Date[]) => {
         if (dates.length === 1) {
           const d = dates[0];
           const s =
@@ -634,7 +634,7 @@ function MyDatePicker(props: MyDatePickerProps) {
         aria-autocomplete="none"
         labelText={''}
         hideLabel={true}
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           props.onChange(e.target.value);
         }}
         // @ts-ignore
